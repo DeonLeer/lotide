@@ -20,7 +20,7 @@ const eqArrays = (arr1, arr2) => {
       if (arr1[i] !== arr2[i]) {
         return false;
       }
-    }    
-  } return true
-}
-console.log(eqArrays([1, 2, 3], [1, 2, "3"]));
+    }
+  } return true;
+};
+assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
