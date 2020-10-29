@@ -25,24 +25,22 @@ const eqArrays = (arr1, arr2) => {
 };
 
 const eqObjects = (obj1, obj2) => {
-  obj1Keys = Object.keys(obj1);
-  obj2Keys = Object.keys(obj2);
+  let obj1Keys = Object.keys(obj1);
+  let obj2Keys = Object.keys(obj2);
   if (obj1Keys.length !== obj2Keys.length) {
-    return false
+    return false;
   } else {
-    counter = 0;
+    let counter = 0;
     for (let key of obj1Keys) {
-      if (key !== obj2Keys[counter]) {
+      if (Array.isArray(obj1[key]) !== Array.isArray(obj2[key])) {
         return false;
-      } else if (Array.isArray(obj1[key]) !== Array.isArray(obj2[key])){
-        return false;
-      } else if (Array.isArray(obj1[key]) === true ){
-        if (eqArrays(obj1[key], obj2[key]) === false){
-          return false
+      } else if (Array.isArray(obj1[key]) === true) {
+        if (eqArrays(obj1[key], obj2[key]) === false) {
+          return false;
         }
       } else if ((obj1[key]) !== obj2[key]) {
         return false;
-      } counter += 1
+      } counter += 1;
     }
   } return true;
 };
@@ -61,9 +59,9 @@ const assertObjectsEqual = (actual, expected) => {
     passFail = "Failed";
     logicalOp = "!==";
   }
-  console.log(`${emojis} Assertion ${passFail}: ${inspect(actual)} ${logicalOp} ${inspect(expected)}`)
+  console.log(`${emojis} Assertion ${passFail}: ${inspect(actual)} ${logicalOp} ${inspect(expected)}`);
 };
 
-const ab = { a: "1", b: "2" };
-const ba = { a: "1", b: "2" };
-assertObjectsEqual(ab, ba)
+const ab = { a: "1", b: "3" };
+const ba = { b: "2", a: "1" };
+assertObjectsEqual(ab, ba);
