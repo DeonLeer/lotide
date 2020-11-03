@@ -8,8 +8,7 @@ const assertEqual = function(actual, expected) {
     pass = "Failed";
     logical = "==!";
   }
-  console.log(`Assertion ${pass}: [actual] ${logical} [expected]`);
+  console.log(`Assertion ${pass}: [${actual}] ${logical} [${expected}]`);
 };
 
-assertEqual("Lighthouse Labs", "Bootcamp");
-assertEqual(1, 1);
+module.exports = assertEqual;
